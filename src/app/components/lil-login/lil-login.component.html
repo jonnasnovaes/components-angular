@@ -1,0 +1,70 @@
+<div class="align-items-center d-flex h-100 justify-content-center background-component">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="border border-grey-light p-4 rounded background-card" [ngClass]="loginFailed ? 'login-failed' : ''">
+          <div class="d-flex justify-content-center align-items-center mb-5">
+            <img src="./assets/logo.png" alt="Logo">
+          </div>
+
+          <form class="position-relative" [formGroup]="form" (keydown)="pressEnter($event)">
+            <div class="form-group position-relative">
+              <input type="text" class="form-control form-control-lg pr-5" name="email"
+                     placeholder="E-mail" formControlName="email">
+              <!-- Aqui entra o ícone do input -->
+            </div>
+            <div class="form-group position-relative">
+              <input type="password" class="form-control form-control-lg pr-5"
+                     placeholder="Senha" formControlName="password">
+              <!-- Aqui entra o ícone do input -->
+            </div>
+
+            <!-- Spinner de Loading -->
+            <div class="mt-4 mb-3">
+              <lil-loading-spinner
+                *ngIf="loading"
+                [loading]="loading"
+                [colorClass]="'text-dark'"
+                [typeSpinner]="'spinner-grow'"
+              ></lil-loading-spinner>
+            </div>
+
+            <!-- Box de mensagem de erro de login -->
+            <div class="alert-login-failed" *ngIf="loginFailed">
+              <div class="row">
+              <!-- Aqui entra o ícone de erro -->
+                <div class="col-12">
+                  <div class="row d-flex justify-content-center">
+                    <span class="alert-login-failed-text">E-mail e/ou senha inválido(s).</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="py-3 d-flex align-items-center">
+              <input id="keepLogged" type="checkbox" formControlName="keepLogged"/>
+              <label class="ml-2 mb-0 cursor-pointer" for="keepLogged">Manter-me logado</label>
+            </div>
+
+            <div class="mt-3">
+              <div class="row">
+                <div class="col-4">
+                  <button id="btn-login" type="button" (click)="login()" class="btn btn-lg btn-dark" [disabled]="form.invalid">
+                    <span class="text-blue">Login</span>
+                  </button>
+                </div>
+                <div class="col-8 d-flex align-self-center" *ngIf="forgotPass">
+                  <span id="forgotPass" class="fs-14 text-white ml-3 cursor-pointer" (click)="forgotPassword()">
+                      Esqueci minha senha
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
