@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { LilLoadingRouterRoutingModule } from './lil-loading-router-routing.module';
+import {LilLoadingRouterComponent} from './lil-loading-router.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LilLoadingRouterComponent
+  ],
   imports: [
     CommonModule,
-    LilLoadingRouterRoutingModule
+  ],
+  exports: [
+    LilLoadingRouterComponent
   ]
 })
 export class LilLoadingRouterModule { }
